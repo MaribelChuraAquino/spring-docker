@@ -11,11 +11,9 @@ pipeline {
     }
     stage('Build & Test') {
       steps {
-        tool name: 'Maven3', type: 'maven'
         bat 'mvn -B clean package'
       }
     }
-
     stage('Build Docker Image') {
       steps {
         bat 'docker build -t $IMAGE_NAME .'
