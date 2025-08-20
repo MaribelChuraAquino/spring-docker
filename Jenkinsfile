@@ -11,7 +11,11 @@ pipeline {
     }
     stage('Build & Test') {
       steps {
-        bat 'mvn -B clean package'
+        script {
+          // Asigna la ruta de Maven configurada en Jenkins
+          def mvnHome = tool name: 'Maven3', type: 'maven'
+          bat "\"${mvnHome}\\bin\\mvn\" -B clean package"
+        }
       }
     }
     stage('Build Docker Image') {
