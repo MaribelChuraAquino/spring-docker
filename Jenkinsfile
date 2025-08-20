@@ -20,13 +20,13 @@ pipeline {
     }
     stage('Build Docker Image') {
       steps {
-        bat 'docker build -t $IMAGE_NAME .'
+        bat 'docker build -t %IMAGE_NAME% .'
       }
     }
     stage('Run Container') {
       steps {
         bat 'docker rm -f demo-ci-cd || true'
-        bat 'docker run -d --name demo-ci-cd -p 8080:8080 $IMAGE_NAME'
+        bat 'docker run -d --name demo-ci-cd -p 8080:8080 %IMAGE_NAME%'
       }
     }
   }
