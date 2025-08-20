@@ -10,12 +10,12 @@ pipeline {
       }
     }
     stage('Build & Test') {
-    steps {
-        withMaven(maven: 'Maven3') {
-          bat 'mvn -B clean package'
+      steps {
+          withMaven(maven: 'Maven3') {
+            bat 'mvn -B clean package'
+          }
         }
       }
-    }
 
     stage('Build Docker Image') {
       steps {
